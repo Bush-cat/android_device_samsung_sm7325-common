@@ -1,6 +1,9 @@
 # RIL
 ro.vendor.qti.va_aosp.support=1
 
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+
 # Filesystem
 fs_mgr.overlayfs.prefer_cache_backing_storage=true
 
