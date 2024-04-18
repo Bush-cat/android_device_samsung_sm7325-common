@@ -84,6 +84,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libui_shim.so" "${2}"
             ;;
+        vendor/etc/init/vendor.sensors.sscrpcd.rc)
+            [ "$2" = "" ] && return 0
+            sed -i 's|class early_hal|class core|g' "${2}"
+            ;;
         *)
             return 1
             ;;
