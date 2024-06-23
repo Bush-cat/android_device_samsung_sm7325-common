@@ -115,7 +115,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 $(call soong_config_set,samsungCameraVars,needs_sec_reserved_field,true)
+ifneq ($(TARGET_IS_TABLET),true)
 $(call soong_config_set,samsungCameraVars,extra_ids,54)
+endif
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider-service.samsung \
