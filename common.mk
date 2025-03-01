@@ -239,7 +239,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung-qcom.sm7325
+    vendor.lineage.livedisplay@2.0-service.samsung-qcom
 
 # Media
 PRODUCT_PACKAGES += \
