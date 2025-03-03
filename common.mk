@@ -226,20 +226,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
 
-# Keylayout
-ifneq ($(TARGET_IS_TABLET),true)
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/keylayout/sec_touchscreen.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/sec_touchscreen.kl
-endif
-
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service.samsung \
     libkeymaster4_1support.vendor
 
 # LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung-qcom
+# disabled for now, livedisplay turns the display Black, Interfaces aren't working
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay@2.0-service.samsung-qcom.sm7325
+# switch to common LiveDisplay
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay@2.0-service.samsung-qcom
 
 # Media
 PRODUCT_PACKAGES += \
@@ -280,7 +278,6 @@ PRODUCT_PACKAGES += \
     libnfc_nci_jni \
     NfcNci \
     Tag
-endif
 
 ifeq ($(TARGET_HAVE_SEC_NFC),true)
 PRODUCT_PACKAGES += \
@@ -290,7 +287,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 endif
 
-ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
 endif
