@@ -194,7 +194,7 @@ vendor.powerhal.disp.idle_support=false
 
 # RIL
 vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
-persist.vendor.radio.atfwd.start=true
+persist.vendor.radio.atfwd.start?=true
 ro.vendor.use_data_netmgrd=false
 ro.vendor.sec.radio.def_network=9
 persist.vendor.radio.enableadvancedscan=true
