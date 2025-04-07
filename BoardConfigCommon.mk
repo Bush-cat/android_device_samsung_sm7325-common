@@ -120,11 +120,11 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE           := 10643046400
 BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE       := 3000000000
 BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE       := 400000000
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE      := 1500000000
-BOARD_ODMIMAGE_PARTITION_RESERVED_SIZE     	:= 50000000
+BOARD_ODMIMAGE_PARTITION_RESERVED_SIZE          := 50000000
 BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT             := -1
 BOARD_VENDORIMAGE_EXTFS_INODE_COUNT             := -1
 BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT            := -1
-BOARD_ODMIMAGE_EXTFS_INODE_COUNT           	:= -1
+BOARD_ODMIMAGE_EXTFS_INODE_COUNT                := -1
 
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
@@ -158,13 +158,17 @@ BOARD_SUPPORTS_SOUND_TRIGGER := true
 # Camera
 SOONG_CONFIG_NAMESPACES += samsungCameraVars
 SOONG_CONFIG_samsungCameraVars += \
-    extra_ids \
     needs_sec_reserved_field
+
+SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
+
+ifneq ($(TARGET_IS_TABLET-ONLY),true)
+SOONG_CONFIG_samsungCameraVars += \
+    extra_ids
 
 # ID=54 is macro
 SOONG_CONFIG_samsungCameraVars_extra_ids := 54
-
-SOONG_CONFIG_samsungCameraVars_needs_sec_reserved_field := true
+endif
 
 # Keymaster
 TARGET_KEYMASTER_VARIANT := samsung
@@ -175,6 +179,9 @@ TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_samsung_sm7325
 # HIDL manifests
 DEVICE_MANIFEST_SKUS := yupik
 DEVICE_MANIFEST_YUPIK_FILES += $(COMMON_PATH)/configs/manifest_yupik.xml
+ifneq ($(TARGET_IS_TABLET-ONLY),true)
+DEVICE_MANIFEST_YUPIK_FILES += $(COMMON_PATH)/configs/manifest_yupik_network.xml
+endif
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(COMMON_PATH)/configs/framework_compatibility_matrix.xml \
@@ -206,7 +213,9 @@ TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 
 # RIL
+ifneq ($(TARGET_IS_TABLET),true)
 ENABLE_VENDOR_RIL_SERVICE := true
+endif
 
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
@@ -228,7 +237,9 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 
 # Vibrator
+ifneq ($(TARGET_IS_TABLET),true)
 $(call soong_config_set,samsungVibratorVars,duration_amplitude,true)
+endif
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn

@@ -37,8 +37,6 @@ PRODUCT_ENABLE_UFFD_GC := false
 PRODUCT_PACKAGES += \
     fstab.ramplus \
     init.audio.samsung.rc \
-    init.fingerprint.rc \
-    init.nfc.samsung.rc \
     init.qcom.rc \
     init.qti.kernel.rc \
     init.qti.media.rc \
@@ -47,14 +45,20 @@ PRODUCT_PACKAGES += \
     init.samsung.display.rc \
     init.samsung.rc \
     init.target.rc \
-    init.vendor.onebinary.rc \
-    vendor.samsung.rilchip.qcom.rc \
-    init.vendor.rilcommon.rc \
     init.vendor.sensors.rc \
     wifi_firmware.rc \
     ueventd.qcom.rc \
     wifi_qcom_wcn6750.rc \
     wifi_sec.rc
+
+ifneq ($(TARGET_IS_TABLET),true)
+PRODUCT_PACKAGES += \
+    init.vendor.onebinary.rc \
+    vendor.samsung.rilchip.qcom.rc \
+    init.vendor.rilcommon.rc \
+    init.fingerprint.rc \
+    init.nfc.samsung.rc
+endif
 
 # Vendor scripts
 PRODUCT_PACKAGES += \
@@ -137,7 +141,11 @@ PRODUCT_PACKAGES += \
 
 # Graphics
 PRODUCT_AAPT_CONFIG := normal
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+else
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+endif
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
@@ -159,12 +167,18 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@3.0.vendor \
     vendor.qti.hardware.display.mapper@4.0.vendor \
     vendor.qti.hardware.memtrack-service \
-    vendor.display.config@2.0.vendor \
+    vendor.display.config@2.0.vendor
+
+ifneq ($(TARGET_IS_TABLET),true)
+PRODUCT_PACKAGES += \
     AdvancedDisplay
+endif
 
 # Doze
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     SamsungDoze
+endif
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -186,12 +200,16 @@ PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
 
 # Fingerprint
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.samsung
+endif
 
 # FlipFlap
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     FlipFlap
+endif
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -227,8 +245,10 @@ PRODUCT_PACKAGES += \
     libkeymaster4_1support.vendor
 
 # LiveDisplay
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service.samsung-qcom.sm7325
+endif
 
 # Media
 PRODUCT_PACKAGES += \
@@ -263,11 +283,16 @@ PRODUCT_PACKAGES += \
     libavservices_minijail.vendor
 
 # NFC
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
     NfcNci \
     Tag
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
+endif
 
 ifeq ($(TARGET_HAVE_SEC_NFC),true)
 PRODUCT_PACKAGES += \
@@ -276,9 +301,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 endif
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf
 
 # Perf
 PRODUCT_PACKAGES += \
@@ -300,19 +322,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
@@ -331,6 +347,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
+
+ifneq ($(TARGET_IS_TABLET),true)
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
+endif
 
 # Power
 PRODUCT_PACKAGES += \
@@ -351,6 +377,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc
 
 # RIL
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2.vendor \
@@ -361,6 +388,7 @@ PRODUCT_PACKAGES += \
     secril_config_svc \
     sehradiomanager \
     libjsoncpp.vendor
+endif
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -375,8 +403,10 @@ PRODUCT_PACKAGES += \
     libcamera_metadata.vendor
 
 # Touch features
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.samsung_sm7325
+endif
 
 # Vendor service manager
 PRODUCT_PACKAGES += \
@@ -394,16 +424,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/usb/etc
 
 # Vibrator
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.samsung
+endif
 
 # Tether
+ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml \
     libipanat \
     android.hardware.tetheroffload.config@1.0.vendor  \
-    android.hardware.tetheroffload.control@1.0.vendor
+    android.hardware.tetheroffload.control@1.0.vendor \
+    TetheringConfigOverlay
+endif
 
 # VNDK
 PRODUCT_PACKAGES += \
@@ -419,8 +454,7 @@ PRODUCT_PACKAGES += \
     wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf \
-    WifiOverlay \
-    TetheringConfigOverlay
+    WifiOverlay
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/icm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/icm.conf \

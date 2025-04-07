@@ -199,8 +199,8 @@ ro.vendor.use_data_netmgrd=false
 ro.vendor.sec.radio.def_network=9
 persist.vendor.radio.enableadvancedscan=true
 ro.telephony.default_cdma_sub=0
-ro.telephony.default_network=26,26
-ro.radio.noril=no
+ro.telephony.default_network?=26,26
+ro.radio.noril?=no
 
 # USB
 vendor.usb.diag.func.name=ffs
