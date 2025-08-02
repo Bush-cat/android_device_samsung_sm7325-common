@@ -815,6 +815,7 @@ vendor/lib64/libnanopb.so
 
 # Thermal
 vendor/bin/thermal-engine
+vendor/etc/btcon.json
 vendor/etc/init/init_thermal-engine.rc
 vendor/etc/thermal-engine.conf
 vendor/lib/libthermalclient.so
