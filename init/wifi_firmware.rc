@@ -1,5 +1,5 @@
 on early-init
-
+# todo decommonize this to the devices, makes cleaner commit history
 # bootloader revision 1, A528N (asia)
 on fs && property:ro.boot.rp=1 && property:ro.boot.em.model=SM-A528N
     mount none /vendor/firmware/wlan/a528n/rev1/wpss.b01 /vendor/firmware/wpss.b01 bind
@@ -448,3 +448,99 @@ on fs && property:ro.boot.rp=10 && property:ro.boot.em.model=SM-A736B
     mount none /vendor/firmware/wlan/rev10/wpss.b06 /vendor/firmware/wpss.b06 bind
     mount none /vendor/firmware/wlan/rev10/wpss.b07 /vendor/firmware/wpss.b07 bind
     mount none /vendor/firmware/wlan/rev10/wpss.mdt /vendor/firmware/wpss.mdt bind
+
+# bootloader revision 2, T733
+on fs && property:ro.boot.rp=2 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev2/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev2/wpss.mdt /vendor/firmware/wpss.mdt bind
+    # BL rev 1 firmware works on all rev2 devices
+
+# bootloader revision 3, T733
+on fs && property:ro.boot.rp=3 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev3/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b06 /vendor/firmware/wpss.b06 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.b07 /vendor/firmware/wpss.b07 bind
+    mount none /vendor/firmware/wlan/rev3/wpss.mdt /vendor/firmware/wpss.mdt bind
+
+# bootloader revision 4, T733
+on fs && property:ro.boot.rp=4 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev4/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b06 /vendor/firmware/wpss.b06 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.b07 /vendor/firmware/wpss.b07 bind
+    mount none /vendor/firmware/wlan/rev4/wpss.mdt /vendor/firmware/wpss.mdt bind
+
+# bootloader revision 5, T733
+on fs && property:ro.boot.rp=5 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev5/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b06 /vendor/firmware/wpss.b06 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.b07 /vendor/firmware/wpss.b07 bind
+    mount none /vendor/firmware/wlan/rev5/wpss.mdt /vendor/firmware/wpss.mdt bind
+
+# bootloader revision 6, T733
+on fs && property:ro.boot.rp=6 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev6/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.mdt /vendor/firmware/wpss.mdt bind
+    # BL rev 6 firmware works on all rev6 and rev7 devices
+    mount none /vendor/firmware/wlan/rev6/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b07 /vendor/firmware/wpss.b07 bind
+    # BL rev 5 wpss.b06 works on all rev 5, 6, 7, 8, 9 devices
+    mount none /vendor/firmware/wlan/rev6/wpss.b06 /vendor/firmware/wpss.b06 bind
+
+# bootloader revision 7, T733
+on fs && property:ro.boot.rp=7 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev7/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev7/wpss.mdt /vendor/firmware/wpss.mdt bind
+    # BL rev 6 firmware works on all rev6 and rev7 devices
+    mount none /vendor/firmware/wlan/rev6/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev6/wpss.b07 /vendor/firmware/wpss.b07 bind
+    # BL rev 5 wpss.b06 works on all rev 5, 6, 7, 8, 9 devices
+    mount none /vendor/firmware/wlan/rev6/wpss.b06 /vendor/firmware/wpss.b06 bind
+
+# bootloader revision 8, T733
+on fs && property:ro.boot.rp=8 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev8/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.b07 /vendor/firmware/wpss.b07 bind
+    mount none /vendor/firmware/wlan/rev8/wpss.mdt /vendor/firmware/wpss.mdt bind
+    # BL rev 5 wpss.b06 works on all rev 5, 6, 7, 8, 9 devices
+    mount none /vendor/firmware/wlan/rev6/wpss.b06 /vendor/firmware/wpss.b06 bind
+
+# bootloader revision 9, T733
+on fs && property:ro.boot.rp=9 && property:ro.boot.em.model=SM-T733
+    mount none /vendor/firmware/wlan/rev9/wpss.b00 /vendor/firmware/wpss.b00 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.b01 /vendor/firmware/wpss.b01 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.b02 /vendor/firmware/wpss.b02 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.b03 /vendor/firmware/wpss.b03 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.b04 /vendor/firmware/wpss.b04 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.b05 /vendor/firmware/wpss.b05 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.b07 /vendor/firmware/wpss.b07 bind
+    mount none /vendor/firmware/wlan/rev9/wpss.mdt /vendor/firmware/wpss.mdt bind
+    # BL rev 5 wpss.b06 works on all rev 5, 6, 7, 8, 9 devices
+    mount none /vendor/firmware/wlan/rev6/wpss.b06 /vendor/firmware/wpss.b06 bind

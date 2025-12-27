@@ -79,7 +79,7 @@ vendor/etc/audio_tuning_mixer.txt
 
 # Soundtrigger
 vendor/lib/hw/sound_trigger.primary.lahaina.so
-vendor/lib64/hw/sound_trigger.primary.lahaina.so
+vendor/lib64/hw/sound_trigger.primary.lahaina.so # not in gts7fewifi, ship anyways, like sm8250
 vendor/lib/libaudio_soundtrigger.so
 vendor/lib/libgcs.so
 vendor/lib/libgcs-ipc.so
@@ -209,7 +209,7 @@ vendor/firmware/evass-lt.mbn
 vendor/firmware/evass-lt.mdt
 vendor/firmware/evass.mbn
 vendor/firmware/evass.mdt
-vendor/firmware/multical.bin
+vendor/firmware/multical.bin # not in gts7fewifi, ship anyways, like sm8250
 
 # Charger
 vendor/bin/hvdcp_opti
@@ -262,8 +262,8 @@ vendor/lib/liboemcrypto.so
 vendor/lib64/liboemcrypto.so
 vendor/lib/libtrustedapploader.so
 vendor/lib64/libtrustedapploader.so
-vendor/lib/libwvhidl.so|2f717b37bf5111a111a6f7b7d0e3f9a12216d502|36990dbac5c87ccb351071a2758b0786b532f0f1
-vendor/lib/mediadrm/libwvdrmengine.so|7a4fe696df211d699263734c62564223f240ae80|78b645e57df4c57c9406619afd345916f7705f27
+vendor/lib/libwvhidl.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # Feature
 vendor/lib/libsemnativecarrierfeature.so
@@ -274,7 +274,7 @@ vendor/lib/libsecnativefeature.so
 vendor/lib64/libsecnativefeature.so
 
 # Gatekeeper
-vendor/lib64/hw/gatekeeper.mdfpp.so|f4dcf5f338f40ae39fa62e79ce4ff37e5761ec33|7b185aca7ae62e2b7104d36740587a351cc4867e
+vendor/lib64/hw/gatekeeper.mdfpp.so
 
 # GPS
 vendor/app/CACertService/CACertService.apk
@@ -455,6 +455,8 @@ vendor/lib/libadreno_utils.so
 vendor/lib64/libadreno_utils.so
 
 # Display - from XQ-BC72 61.2.A.0.410
+# TODO, THIS MIGHT cause issues with our lcd device!
+# TODO, maybe fairphone 5 is better suited for us and maybe better maintained?
 vendor/lib64/libdpps.so|9caf32a0d3636af579ea6e1a6c5638a16ed19444
 vendor/lib64/librcmask.so|8feb479fe590b6aec282ce3342574d9113f80516
 vendor/lib64/libsdm-diag.so|393c9ad3e3ad3210515900627f65bf6e3633226e
@@ -462,6 +464,14 @@ vendor/lib64/libsdmextension.so|4c32026ff8cb1270081881d4def7a2ad05ad0b80
 vendor/lib64/libdisplayskuutils.so|37e4d543c696a5c9f0c1b44fd7299a0bc7dba5e8
 vendor/lib64/libsdm-color.so|a83576915a146492d430711e273b9af9a95d4fed
 vendor/lib64/libqrtrclient.so|2474a708487c269c04afffbf755fff1686c6011c
+# have to test without it, the flickering
+# vendor/lib64/libdpps.so
+# vendor/lib64/librcmask.so
+# vendor/lib64/libsdm-diag.so
+# vendor/lib64/libsdmextension.so
+# vendor/lib64/libdisplayskuutils.so
+# vendor/lib64/libsdm-color.so
+# vendor/lib64/libqrtrclient.so
 
 # Graphics firmware
 vendor/firmware/a660_gmu.bin
@@ -472,8 +482,8 @@ vendor/gpu/kbc/unified_kbcs_64.bin
 vendor/gpu/kbc/unified_ksqs.bin
 
 # HotwordEnrollment
-product/priv-app/HotwordEnrollmentOKGoogleEx3HEXAGON/HotwordEnrollmentOKGoogleEx3HEXAGON.apk
-product/priv-app/HotwordEnrollmentXGoogleEx3HEXAGON/HotwordEnrollmentXGoogleEx3HEXAGON.apk
+product/priv-app/HotwordEnrollmentOKGoogleEx3HEXAGON/HotwordEnrollmentOKGoogleEx3HEXAGON.apk # not in gts7fewifi, ship anyways, like sm8250
+product/priv-app/HotwordEnrollmentXGoogleEx3HEXAGON/HotwordEnrollmentXGoogleEx3HEXAGON.apk # not in gts7fewifi, ship anyways, like sm8250
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/framework/com.android.hotwordenrollment.common.util.jar
 
@@ -494,7 +504,7 @@ vendor/etc/init/ipa_fws.rc
 
 # Keymaster
 vendor/lib64/libkeymaster_helper.so
-vendor/lib64/libskeymaster4device.so|0f7c1dededa386cd2d9edfdd33c52d5587fd33ea|de98a294927f45b84e41b88a2145c7771377715c
+vendor/lib64/libskeymaster4device.so
 
 # Machine learning
 vendor/lib64/libreffeature.so
@@ -613,7 +623,7 @@ vendor/etc/sec_config
 vendor/etc/init/init.qti.qcv.rc
 
 # RIL
-vendor/bin/hw/rild
+vendor/bin/hw/rild # not in gts7fewifi, ship anyways, like sm8250
 vendor/bin/adpl
 vendor/bin/ipacm-diag
 vendor/bin/tftp_server
@@ -621,33 +631,33 @@ vendor/bin/rmt_storage
 vendor/etc/init/netmgrd.rc
 vendor/etc/data/dsi_config.xml
 vendor/etc/data/netmgr_config.xml
-vendor/etc/locale/plmn_delta_eng.bin
-vendor/etc/plmn_delta_hktw.bin
-vendor/etc/plmn_se13.bin
-vendor/etc/mtu-conf.xml
+vendor/etc/locale/plmn_delta_eng.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/plmn_delta_hktw.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/plmn_se13.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/mtu-conf.xml # not in gts7fewifi, ship anyways, like sm8250
 vendor/lib/libconfigdb.so
 vendor/lib64/libconfigdb.so
 vendor/lib/libqcmaputils.so
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libengmode_client.so
-vendor/lib64/libsec-ril.so
+vendor/lib64/libsec-ril.so # not in gts7fewifi, ship anyways, like sm8250
 vendor/lib/libsecril-client.so
 vendor/lib64/libsecril-client.so
-vendor/lib64/libril_sem.so
-vendor/lib64/libSemTelephonyProps.so
-vendor/lib64/libSemDataProps.so
+vendor/lib64/libril_sem.so # not in gts7fewifi, ship anyways, like sm8250
+vendor/lib64/libSemTelephonyProps.so # not in gts7fewifi, ship anyways, like sm8250
+vendor/lib64/libSemDataProps.so # not in gts7fewifi, ship anyways, like sm8250
 vendor/etc/init/dataadpl.rc
 vendor/etc/init/ipacm-diag.rc
 vendor/etc/init/vendor.qti.tftp.rc
 vendor/etc/init/vendor.qti.rmt_storage.rc
-vendor/etc/plmn_delta_usagsm.bin
-vendor/etc/plmn_delta.bin
-vendor/etc/locale/plmn_delta_zh-rCN.bin
-vendor/etc/locale/plmn_delta_zh-rTW.bin
-vendor/etc/locale/plmn_delta_zh-rHK.bin
-vendor/etc/plmn_delta_attaio.bin
-vendor/etc/sec_config_oem
-vendor/etc/pdpcnt-conf.xml
+vendor/etc/plmn_delta_usagsm.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/plmn_delta.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/locale/plmn_delta_zh-rCN.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/locale/plmn_delta_zh-rTW.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/locale/plmn_delta_zh-rHK.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/plmn_delta_attaio.bin # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/sec_config_oem # not in gts7fewifi, ship anyways, like sm8250
+vendor/etc/pdpcnt-conf.xml # not in gts7fewifi, ship anyways, like sm8250
 vendor/lib/libqrtr.so
 vendor/lib64/libqrtr.so
 vendor/lib/libsystem_health_mon.so
@@ -655,9 +665,9 @@ vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libvkmanager_vendor.so
 vendor/lib/libxml.so
 vendor/lib64/libxml.so
-vendor/lib64/vendor.samsung.hardware.radio.bridge@2.0.so
-vendor/lib64/vendor.samsung.hardware.radio.bridge@2.1.so
-vendor/lib64/vendor.samsung.hardware.radio.channel@2.0.so
+vendor/lib64/vendor.samsung.hardware.radio.bridge@2.0.so # not in gts7fewifi, ship anyways, like sm8250
+vendor/lib64/vendor.samsung.hardware.radio.bridge@2.1.so # not in gts7fewifi, ship anyways, like sm8250
+vendor/lib64/vendor.samsung.hardware.radio.channel@2.0.so # not in gts7fewifi, ship anyways, like sm8250
 
 # Sensors
 vendor/bin/factory.ssc
@@ -814,6 +824,9 @@ vendor/lib64/libnanopb.so
 
 # Thermal
 vendor/bin/thermal-engine
+# vendor/etc/btcon.json
+# it is always empty except for o1q (sm8350), so we can use commonized
+vendor/etc/btcon.json
 vendor/etc/init/init_thermal-engine.rc
 vendor/etc/thermal-engine.conf
 vendor/lib/libthermalclient.so

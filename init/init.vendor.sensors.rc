@@ -69,6 +69,12 @@ on boot
     chown system system /sys/class/sensors/ssc_core/update_ssc_flip
     chown system system /sys/class/sensors/ssc_core/ar_mode
     chown system system /sys/class/sensors/ssc_core/sbm_init
+    chown system system /sys/class/sensors/ssc_core/light_utilization_rate
+    chown system system /sys/class/sensors/ssc_core/wakeup_reason
+    chown system system /sys/class/sensors/ssc_core/probe_fail_reason
+    chown system system /sys/class/sensors/ssc_core/grip_fail
+    chown system system /sys/class/sensors/ssc_core/pocket_inject
+    chown system system /sys/class/sensors/ssc_core/sns_crash
 
     # Sensor
     chown system system /sys/kernel/boot_slpi/cmd
@@ -103,6 +109,7 @@ on boot
     chown system radio /sys/class/sensors/sub_accelerometer_sensor/reactive_alert
     chown system radio /sys/class/sensors/sub_accelerometer_sensor/lowpassfilter
     chown system system /sys/class/sensors/sub_accelerometer_sensor/dhr_sensor_info
+    chown system system /sys/class/sensors/sub_accelerometer_sensor/ref_angle
 
     # Sub Gyro Sensor
     chown system radio /sys/class/sensors/sub_gyro_sensor/name
@@ -129,7 +136,7 @@ on boot
     chown system radio /sys/class/sensors/digital_hall/selftest
     chown system radio /sys/class/sensors/digital_hall/spec
     chown system radio /sys/class/sensors/digital_hall/test_spec
-    chown system radio /sys/class/sensors/digital_hall/ref_angle
+    chown system system /sys/class/sensors/digital_hall/ref_angle
     chown system radio /sys/class/sensors/digital_hall/read_data
     chown system radio /sys/class/sensors/digital_hall/test_read
     chown system radio /sys/class/sensors/digital_hall/reset_auto_cal
@@ -152,6 +159,7 @@ on boot
     chown system radio /sys/class/sensors/barometer_sensor/selftest
     chown system system /sys/class/sensors/barometer_sensor/dhr_sensor_info
     chown system system /sys/class/sensors/barometer_sensor/sw_offset
+    chown system system /sys/class/sensors/barometer_sensor/esn
 
     # Proximity Sensor
     chown system radio /sys/class/sensors/proximity_sensor/name
@@ -291,6 +299,67 @@ on property:sys.boot_completed=1
     chown system radio /sys/class/sensors/grip_sensor/unknown_state_2ch
     chown system radio /sys/class/sensors/grip_sensor/noti_enable
     chown system radio /sys/class/sensors/grip_sensor/country_code
+
+    # WIFI Grip sensor
+    chown system radio /sys/class/sensors/grip_sensor_wifi/name
+    chown system radio /sys/class/sensors/grip_sensor_wifi/vendor
+    chown system radio /sys/class/sensors/grip_sensor_wifi/raw_data
+    chown system radio /sys/class/sensors/grip_sensor_wifi/threshold
+    chown system radio /sys/class/sensors/grip_sensor_wifi/calibration
+    chown system radio /sys/class/sensors/grip_sensor_wifi/onoff
+    chown system radio /sys/class/sensors/grip_sensor_wifi/reset
+    chown system radio /sys/class/sensors/grip_sensor_wifi/mode
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_ref_cap
+    chown system radio /sys/class/sensors/grip_sensor_wifi/gain
+    chown system radio /sys/class/sensors/grip_sensor_wifi/start
+    chown system radio /sys/class/sensors/grip_sensor_wifi/normal_threshold
+    chown system radio /sys/class/sensors/grip_sensor_wifi/gain_ch2
+    chown system radio /sys/class/sensors/grip_sensor_wifi/raw_data_ch2
+    chown system radio /sys/class/sensors/grip_sensor_wifi/diff_avg_ch2
+    chown system radio /sys/class/sensors/grip_sensor_wifi/normal_threshold_ch2
+    chown system radio /sys/class/sensors/grip_sensor_wifi/ch_state
+    chown system radio /sys/class/sensors/grip_sensor_wifi/body_threshold
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_flush
+    chown system radio /sys/class/sensors/grip_sensor_wifi/irq_count
+    chown system radio /sys/class/sensors/grip_sensor_wifi/ch_count
+    chown system radio /sys/class/sensors/grip_sensor_wifi/resolution
+    chown system radio /sys/class/sensors/grip_sensor_wifi/adc_filt
+    chown system radio /sys/class/sensors/grip_sensor_wifi/useful_filt
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_irq_count
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_threshold
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_total_cap
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sar_enable
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sw_reset
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_earjack
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_baseline
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_raw
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_gain
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_gain_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_check
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sar_only_mode
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sar_press_threshold
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sar_release_threshold
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_firm_version_phone
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_firm_version_panel
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_firm_update
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_firm_update_status
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_irq_state
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_irq_en_cnt
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_reg_rw
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_crc_check
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sw_reset_ready
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_register_recover
+    chown system radio /sys/class/sensors/grip_sensor_wifi/country_code
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sar_press_threshold_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_sar_release_threshold_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_irq_count_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_threshold_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_total_cap_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_baseline_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_raw_2ch
+    chown system radio /sys/class/sensors/grip_sensor_wifi/grip_check_2ch
 
 on post-fs-data && property:ro.build.type=userdebug
     #sensors log dir

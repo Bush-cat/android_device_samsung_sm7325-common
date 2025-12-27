@@ -2,4 +2,9 @@ allow vendor_qti_init_shell sysfs_power_writable:file { write setattr };
 
 allow vendor_qti_init_shell vendor_sysfs_qdss_dev:file setattr;
 
+# https://github.com/LineageOS/android_device_nothing_Spacewar/commit/d79de7449f1cdce8d20f92bbb720ae29bb349ef6
+# note when cherry picking change description to
+# 01-01 00:00:00.423 W/init.qcom.early(  961): type=1400 audit(0.0:71): avc:  denied  { kill } for  capability=5  scontext=u:r:vendor_qti_init_shell:s0 tcontext=u:r:vendor_qti_init_shell:s0 tclass=capability permissive=0
+allow vendor_qti_init_shell self:capability { kill };
+
 set_prop(vendor_qti_init_shell, ctl_start_prop)

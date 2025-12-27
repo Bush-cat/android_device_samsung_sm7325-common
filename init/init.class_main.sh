@@ -34,7 +34,7 @@ baseband=`getprop ro.baseband`
 sgltecsfb=`getprop persist.vendor.radio.sglte_csfb`
 datamode=`getprop persist.vendor.data.mode`
 low_ram=`getprop ro.config.low_ram`
-qcrild_status=false
+qcrild_status=true # todo get https://github.com/LineageOS/android_device_samsung_sm8250-common/commit/4aedd01612eb06531364eb83e332f81262c6b228#diff-9c134a5ae33e5cd3c9793cd9ca451e53d88c2212f9ad2e68b87fd0979055540c
 
 case "$baseband" in
     "apq" | "sda" | "qcs" )
